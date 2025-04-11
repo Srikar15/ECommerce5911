@@ -28,6 +28,9 @@ namespace EcommerceApp
                 Console.WriteLine("6. Place Order");
                 Console.WriteLine("7. View Customer Orders");
                 Console.WriteLine("8. Mark Order As Shipped");
+                Console.WriteLine("9. View Reward Points");
+                Console.WriteLine("10. Check Shipment Status");
+
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter choice: ");
 
@@ -140,6 +143,26 @@ namespace EcommerceApp
                             bool shipped = orderDao.MarkAsShipped(shipId);
                             Console.WriteLine(shipped ? "Marked as shipped." : "Failed.");
                             break;
+
+                        case "9":
+                            Console.Write("Enter Customer ID: ");
+                            int rpCustId = int.Parse(Console.ReadLine());
+                            var rpCust = customerDao.GetCustomerById(rpCustId) ?? throw new CustomerNotFoundException();
+                            Console.WriteLine($"Reward Points for {rpCust.Name}: {rpCust.RewardPoints}");
+                            break;
+                        
+                        case "10":
+                            Console.Write("Enter Order ID: ");
+                            int chkOrderId = int.Parse(Console.ReadLine());
+                            var ordersList = orderDao.GetOrdersByCustomerId(0); // not ideal, but we'll loop all for now
+
+                            var order = ordersList.Find(o => o.OrderId == chkOrderId);
+                            if (order == null)
+                                throw new OrderNotFoundException($"Order #{chkOrderId} not found.");
+                        
+                            Console.WriteLine($"Order #{order.OrderId} Shipment Status: {(order.IsShipped ? "Shipped" : "Not Shipped")}");
+                            break;
+
 
                         case "0":
                             return;
