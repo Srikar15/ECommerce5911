@@ -1,0 +1,53 @@
+using EcommerceApp.Models;
+
+namespace EcommerceApp.Dao.Interfaces
+{
+    public interface ICustomerDao
+    {
+        bool CreateCustomer(Customer customer);
+        bool DeleteCustomer(int customerId);
+        Customer GetCustomerById(int customerId);
+        List<Order> GetOrdersByCustomerId(int customerId);
+    }
+}
+
+
+using EcommerceApp.Models;
+
+namespace EcommerceApp.Dao.Interfaces
+{
+    public interface IProductDao
+    {
+        bool CreateProduct(Product product);
+        bool DeleteProduct(int productId);
+        List<Product> GetAllProducts();
+        Product GetProductById(int productId);
+    }
+}
+
+
+using EcommerceApp.Models;
+
+namespace EcommerceApp.Dao.Interfaces
+{
+    public interface ICartDao
+    {
+        bool AddToCart(Customer customer, Product product, int quantity);
+        bool RemoveFromCart(Customer customer, Product product);
+        List<Cart> GetCartItems(Customer customer);
+        bool ClearCart(Customer customer);
+    }
+}
+
+
+using EcommerceApp.Models;
+
+namespace EcommerceApp.Dao.Interfaces
+{
+    public interface IOrderDao
+    {
+        bool PlaceOrder(Customer customer, List<(Product, int)> items, string shippingAddress, int pointsToRedeem);
+        List<Order> GetOrdersByCustomerId(int customerId);
+        bool MarkAsShipped(int orderId);
+    }
+}
