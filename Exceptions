@@ -1,0 +1,37 @@
+using System;
+
+namespace EcommerceApp.Exceptions
+{
+    public class CustomerNotFoundException : Exception
+    {
+        public CustomerNotFoundException() : base("Customer not found.") { }
+
+        public CustomerNotFoundException(string message) : base(message) { }
+    }
+}
+
+
+using System;
+
+namespace EcommerceApp.Exceptions
+{
+    public class ProductNotFoundException : Exception
+    {
+        public ProductNotFoundException() : base("Product not found.") { }
+
+        public ProductNotFoundException(string message) : base(message) { }
+    }
+}
+
+
+using System;
+
+namespace EcommerceApp.Exceptions
+{
+    public class OrderNotFoundException : Exception
+    {
+        public OrderNotFoundException() : base("Order not found.") { }
+
+        public OrderNotFoundException(string message) : base(message) { }
+    }
+}
