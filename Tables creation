@@ -1,0 +1,45 @@
+-- 1. Customers Table
+CREATE TABLE Customers (
+    CustomerId INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100),
+    Email NVARCHAR(100),
+    Password NVARCHAR(100),
+    RewardPoints INT DEFAULT 0
+);
+
+-- 2. Products Table
+CREATE TABLE Products (
+    ProductId INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100),
+    Price DECIMAL(10,2),
+    Description NVARCHAR(255),
+    StockQuantity INT
+);
+
+-- 3. Cart Table
+CREATE TABLE Cart (
+    CartId INT PRIMARY KEY IDENTITY(1,1),
+    CustomerId INT FOREIGN KEY REFERENCES Customers(CustomerId),
+    ProductId INT FOREIGN KEY REFERENCES Products(ProductId),
+    Quantity INT
+);
+
+-- 4. Orders Table
+CREATE TABLE Orders (
+    OrderId INT PRIMARY KEY IDENTITY(1,1),
+    CustomerId INT FOREIGN KEY REFERENCES Customers(CustomerId),
+    OrderDate DATETIME DEFAULT GETDATE(),
+    TotalPrice DECIMAL(10,2),
+    ShippingAddress NVARCHAR(255),
+    IsShipped BIT DEFAULT 0, -- Shipment Tracking
+    PointsRedeemed INT DEFAULT 0               -- How many points used
+);
+
+-- 5. Order Items Table
+CREATE TABLE OrderItems (
+    OrderItemId INT PRIMARY KEY IDENTITY(1,1),
+    OrderId INT FOREIGN KEY REFERENCES Orders(OrderId),
+    ProductId INT FOREIGN KEY REFERENCES Products(ProductId),
+    Quantity INT,
+    Price DECIMAL(10,2)
+);
