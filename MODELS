@@ -1,0 +1,120 @@
+namespace EcommerceApp.Models
+{
+    public class Customer
+    {
+        public int CustomerId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public int RewardPoints { get; set; }
+
+        public Customer() { }
+
+        public Customer(int customerId, string name, string email, string password, int rewardPoints)
+        {
+            CustomerId = customerId;
+            Name = name;
+            Email = email;
+            Password = password;
+            RewardPoints = rewardPoints;
+        }
+    }
+}
+
+
+namespace EcommerceApp.Models
+{
+    public class Product
+    {
+        public int ProductId { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string Description { get; set; }
+        public int StockQuantity { get; set; }
+
+        public Product() { }
+
+        public Product(int productId, string name, decimal price, string description, int stockQuantity)
+        {
+            ProductId = productId;
+            Name = name;
+            Price = price;
+            Description = description;
+            StockQuantity = stockQuantity;
+        }
+    }
+}
+
+
+namespace EcommerceApp.Models
+{
+    public class Cart
+    {
+        public int CartId { get; set; }
+        public int CustomerId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+
+        public Cart() { }
+
+        public Cart(int cartId, int customerId, int productId, int quantity)
+        {
+            CartId = cartId;
+            CustomerId = customerId;
+            ProductId = productId;
+            Quantity = quantity;
+        }
+    }
+}
+
+
+namespace EcommerceApp.Models
+{
+    public class Order
+    {
+        public int OrderId { get; set; }
+        public int CustomerId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public decimal TotalPrice { get; set; }
+        public string ShippingAddress { get; set; }
+        public bool IsShipped { get; set; }
+        public int PointsRedeemed { get; set; }
+
+        public Order() { }
+
+        public Order(int orderId, int customerId, DateTime orderDate, decimal totalPrice, string shippingAddress, bool isShipped, int pointsRedeemed)
+        {
+            OrderId = orderId;
+            CustomerId = customerId;
+            OrderDate = orderDate;
+            TotalPrice = totalPrice;
+            ShippingAddress = shippingAddress;
+            IsShipped = isShipped;
+            PointsRedeemed = pointsRedeemed;
+        }
+    }
+}
+
+
+namespace EcommerceApp.Models
+{
+    public class OrderItem
+    {
+        public int OrderItemId { get; set; }
+        public int OrderId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
+
+        public OrderItem() { }
+
+        public OrderItem(int orderItemId, int orderId, int productId, int quantity, decimal price)
+        {
+            OrderItemId = orderItemId;
+            OrderId = orderId;
+            ProductId = productId;
+            Quantity = quantity;
+            Price = price;
+        }
+    }
+}
