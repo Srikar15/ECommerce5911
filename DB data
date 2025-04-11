@@ -1,0 +1,63 @@
+INSERT INTO Customers (Name, Email, Password, RewardPoints) VALUES
+('Arya Stark', 'arya@winterfell.com', 'valar123', 40),
+('Jon Snow', 'jon@nightswatch.org', 'ghost321', 75),
+('Daenerys Targaryen', 'dany@dragons.com', 'dracarys', 120),
+('Tyrion Lannister', 'tyrion@casterly.com', 'wine123', 30),
+('Bran Stark', 'bran@raven.com', '3eyed', 90),
+('Cersei Lannister', 'cersei@redkeep.com', 'queen123', 60),
+('Samwell Tarly', 'sam@citadel.com', 'gilly456', 15),
+('Sansa Stark', 'sansa@north.com', 'lady123', 50),
+('Brienne of Tarth', 'brienne@oathkeeper.com', 'sword789', 10),
+('The Hound', 'hound@clegane.com', 'bark999', 5);
+
+
+INSERT INTO Products (Name, Price, Description, StockQuantity) VALUES
+('Sword of Ice', 1500.00, 'Valyrian steel sword', 5),
+('Dragon Egg', 10000.00, 'Authentic fossilized egg', 2),
+('Winter Cloak', 800.00, 'Keeps you warm beyond the wall', 15),
+('Ale Barrel', 300.00, 'Best brew in Westeros', 25),
+('Chainmail Armor', 2200.00, 'Heavy steel protection', 8),
+('Maester’s Book', 500.00, 'Ancient knowledge', 20),
+('Wildling Boots', 600.00, 'Snow-resistant boots', 10),
+('Direwolf Fur', 1200.00, 'Fur of legend', 6),
+('Raven Scroll', 150.00, 'Quick messaging system', 30),
+('Valyrian Ring', 3200.00, 'Enchanted jewelry', 3);
+
+
+INSERT INTO Cart (CustomerId, ProductId, Quantity) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 4, 2),
+(4, 6, 1),
+(5, 3, 2),
+(6, 5, 1),
+(7, 7, 3),
+(8, 8, 1),
+(9, 9, 2),
+(10, 10, 1);
+
+
+INSERT INTO Orders (CustomerId, OrderDate, TotalPrice, ShippingAddress, IsShipped, PointsRedeemed) VALUES
+(1, GETDATE(), 1450.00, 'Winterfell Castle', 1, 50),
+(2, GETDATE(), 9600.00, 'Castle Black', 0, 400),
+(3, GETDATE(), 600.00, 'Dragonstone', 0, 200),
+(4, GETDATE(), 2800.00, 'King’s Landing', 1, 100),
+(5, GETDATE(), 1600.00, 'Weirwood Tree', 0, 0),
+(6, GETDATE(), 3200.00, 'Red Keep Tower', 1, 0),
+(7, GETDATE(), 1200.00, 'Citadel Library', 0, 0),
+(8, GETDATE(), 2500.00, 'Winterfell', 1, 100),
+(9, GETDATE(), 150.00, 'Tarth Island', 0, 0),
+(10, GETDATE(), 3000.00, 'Kingsroad Outpost', 1, 0);
+
+
+INSERT INTO OrderItems (OrderId, ProductId, Quantity, Price) VALUES
+(1, 1, 1, 1500.00),
+(2, 2, 1, 10000.00),
+(3, 4, 2, 300.00),
+(4, 6, 1, 500.00),
+(5, 3, 2, 800.00),
+(6, 10, 1, 3200.00),
+(7, 7, 2, 600.00),
+(8, 8, 2, 1250.00),
+(9, 9, 1, 150.00),
+(10, 5, 1, 2200.00);
